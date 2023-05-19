@@ -1,0 +1,33 @@
+<!-- <header>
+  <nav class="container navbar navbar-light ">
+    <div class="container-fluid">
+      <a class="navbar-brand">Store</a>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search Products" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+</header> -->
+
+
+<header>
+  <div class="container navbar navbar-light ">
+    <div class="navbar-brand align-item-center d-flex">
+      <i style="font-size: 40px; color: #fff;" class="fas fa-shipping-fast">&nbsp;</i>
+      <strong style="font-size: 30px;">Store</strong>
+      <div class="form-group">
+        <input type="text" class="form-control" ngModel="searchTerm" (keyup)="search($event)" placeholder="Search Products">
+      </div>
+      <span class="fa fa-search search-icon"></span>
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-outline-light" routerLink="/products">Products</button>
+      <button type="button" class="btn btn-outline-light" routerLink="/addproduct">Add a new Product</button>
+      <button class="btn ">
+        <i style="font-size: 40px; color: #fff;" class="fa-solid fa-cart-shopping"></i>
+      </button>
+    </div>
+  </div>
+</header>
