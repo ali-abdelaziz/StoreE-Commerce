@@ -10,6 +10,7 @@ import { ProductsListService } from '../../services/products-list.service';
 export class ProductDetailsComponent implements OnInit {
   id: any;
   data: any = {};
+
   constructor(private route: ActivatedRoute, private service: ProductsListService) {
     this.id = this.route.snapshot.paramMap.get("id")
     console.log(this.id);
@@ -24,6 +25,5 @@ export class ProductDetailsComponent implements OnInit {
       this.data = res
     })
   }
-
 
 }

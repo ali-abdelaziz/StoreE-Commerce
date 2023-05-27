@@ -7,6 +7,7 @@ Project Structure:
 	1- Shared Module
 		- Components
 			- Header component
+			- Select component
 		- Services
 			- Shared services
 
@@ -28,36 +29,11 @@ Project Structure:
 	( https://dummyjson.com/products )
 
 ********************************************
-Command
-
-Query 
-
-
-interface fakeAPI{
-
-// list products
-Product[]:fetchProducts();
-
-// post product
-void:createProduct(product:Product);
-
-// PUT product
-
-// DELETE product
-
-}
-
-********************************************
-Bonus
+Bonus > To be added
 ********************************************
 login page using jwt
 
 unit testing - bonus
 Nginx for serving static files as a docker
-
-git init - create local repo (directory - staging area)
-git add . --> add files to staging
-git commit -m "message" - create object container all files
-git push origin master - push the commits to the remote server
 
 

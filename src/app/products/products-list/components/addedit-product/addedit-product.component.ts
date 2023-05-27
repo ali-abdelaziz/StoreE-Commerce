@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { product } from '../../models/product';
 import { ProductsListService } from '../../services/products-list.service';
+
 
 @Component({
   selector: 'app-addedit-product',
@@ -7,27 +9,32 @@ import { ProductsListService } from '../../services/products-list.service';
   styleUrls: ['./addedit-product.component.css'],
 })
 export class AddeditProductComponent implements OnInit {
-  constructor(private service: ProductsListService) {}
-  success: boolean = false;
+  products: product[] = [];
+  displayAddModal: boolean = false;
 
-  ngOnInit(): void {}
+  constructor(private productService: ProductsListService) {}
 
-  // addProduct() {
-  //   let Model = {
-  //     title: '',
-  //     price: '',
-  //     description: '',
-  //     image: '',
-  //     category: ''
-  //   }
-  //   this.service.createNewProduct(Model).subscribe((res:any) => {
-  //     return this.success = true
-  //   })
-  //   console.log(Model);
-  // }
+  ngOnInit(): void {
+    this.getProducts()
+  }
 
-  addProduct() {
-    return (this.success = true);
+  getProducts() {
+    this.productService.getAllProducts().subscribe((res:any) => {
+      console.log(res);
+      this.products = res.products
+    })
+  }
+
+  showAddModal() {
+    this.displayAddModal = true;
+  }
+
+  hideAddModal(isClosed: boolean) {
+    this.displayAddModal = !isClosed;
+  }
+
+  saveProductToList(newData: any) {
+    this.products.unshift(newData);
   }
 
 }

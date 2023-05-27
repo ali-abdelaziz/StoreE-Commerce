@@ -1,8 +1,7 @@
-
 <div class="container box">
   <div class="row">
     <div class="col-md-5 col-sm-12">
-      <img src="{{data.image}}" alt="sas">
+      <img src="{{data.thumbnail}}" alt="sas">
     </div>
     <div class="col-md-7 col-sm-12">
       <div class="info">
@@ -10,35 +9,15 @@
           <li><strong>Title: </strong>{{data.title}}</li>
           <li><strong>Category: </strong>{{data.category}}</li>
           <li><strong>Description: </strong>{{data.description}}</li>
-          <li><strong>Rate: </strong>{{data.rating.rate}}</li>
-          <li><strong>Count: </strong>{{data.rating.count}}</li>
+          <li><strong>Rate: </strong>{{data.rating}}</li>
+          <li><strong>Count: </strong>{{data.stock}}</li>
           <li><strong>Price: </strong>{{data.price}} $</li>
-          <!-- <li><strong>Discount: </strong>{{data.discount}} $</li> -->
-          <li><strong>Size: </strong>
-            <label class="radio"> <input type="radio" name="size" value="S" checked>
-              <span class="btn btn-warning">S</span>
-            </label>
-            <label class="radio"> <input type="radio" name="size" value="M">
-              <span class="btn btn-warning">M</span>
-            </label>
-            <label class="radio"> <input type="radio" name="size" value="L">
-              <span class="btn btn-warning">L</span>
-            </label>
-            <label class="radio"> <input type="radio" name="size" value="XL">
-              <span class="btn btn-warning">XL</span>
-            </label>
-            <label class="radio"> <input type="radio" name="size" value="XXL">
-              <span class="btn btn-warning">XXL</span>
-            </label>
-          </li>
-          <li>
-            <div class="cart mt-4 align-items-center">
-              <button class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button>
-            </div>
-          </li>
+          <li><strong>Discount: </strong>{{data.discountPercentage}} %</li>
         </ul>
+      </div>
+      <div class="cart mt-4 align-items-center">
+        <button class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button>
       </div>
     </div>
   </div>
 </div>
-
