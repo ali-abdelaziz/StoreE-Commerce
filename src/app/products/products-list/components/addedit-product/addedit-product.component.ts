@@ -1,5 +1,6 @@
+import { product } from './../../models/product';
 import { Component, OnInit } from '@angular/core';
-import { product } from '../../models/product';
+// import { product } from '../../models/product';
 import { ProductsListService } from '../../services/products-list.service';
 
 
@@ -10,7 +11,8 @@ import { ProductsListService } from '../../services/products-list.service';
 })
 export class AddeditProductComponent implements OnInit {
   products: product[] = [];
-  displayAddModal: boolean = false;
+  displayAddEditModal: boolean = false;
+  selectedProduct: any = null;
 
   constructor(private productService: ProductsListService) {}
 
@@ -26,15 +28,28 @@ export class AddeditProductComponent implements OnInit {
   }
 
   showAddModal() {
-    this.displayAddModal = true;
+    this.displayAddEditModal = true;
+    this.selectedProduct = null;
   }
 
   hideAddModal(isClosed: boolean) {
-    this.displayAddModal = !isClosed;
+    this.displayAddEditModal = !isClosed;
   }
 
-  saveProductToList(newData: any) {
-    this.products.unshift(newData);
+  saveOrUpdateProductList(newData: any) {
+    // if(newData.id  === this.selectedProduct.id) {
+    //   const productIndex = this.products.findIndex(data => data.id === newData.id)
+    //   this.products[productIndex] = newData;
+    // }else {
+    //   this.products.unshift(newData);
+    // }
+
+    // this.getProducts();
+  }
+
+  showEditModal(product: product) {
+    this.displayAddEditModal = true;
+    this.selectedProduct = product;
   }
 
 }

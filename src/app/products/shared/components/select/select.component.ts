@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { SharedService } from '../../services/shared.service';
@@ -8,11 +8,14 @@ import { SharedService } from '../../services/shared.service';
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.css']
 })
-export class SelectComponent implements OnInit{
+export class SelectComponent implements OnInit, OnChanges{
 
-  @Input() displayAddModal: boolean = true;
+  @Input() displayAddEditModal: boolean = true;
+  @Input() selectedProduct: any = null;
   @Output() clickClose: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() clickAdd: EventEmitter<any> = new EventEmitter<any>();
+  @Output() clickAddEdit: EventEmitter<any> = new EventEmitter<any>();
+  modalType = "Add";
+
   productForm = this.fb.group({
     title: ["", Validators.required],
     price: [0, Validators.required],
@@ -32,17 +35,28 @@ export class SelectComponent implements OnInit{
 
   }
 
+  ngOnChanges(): void {
+    if(this.selectedProduct) {
+      this.modalType = "Edit";
+      this.productForm.patchValue(this.selectedProduct)
+    }else {
+      this.productForm.reset()
+      this.modalType = "Add";
+    }
+  }
+
   closeModal() {
     this.productForm.reset();
     this.clickClose.emit(true);
   }
 
-  addProduct() {
-    this.productService.saveProduct(this.productForm.value).subscribe(
+  addEditProduct() {
+    this.productService.addEditProduct(this.productForm.value, this.selectedProduct).subscribe(
       response => {
-        this.clickAdd.emit(response);
+        this.clickAddEdit.emit(response);
         this.closeModal();
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product added' });
+        const msg = this.modalType === 'Add' ? 'Product Added' : 'Product Updated';
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: msg });
       },
       (error: any) => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: error });
