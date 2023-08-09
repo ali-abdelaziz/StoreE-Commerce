@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, Output, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { SharedService } from '../../services/shared.service';
+import { ProductsListService } from 'src/app/products/products-list/services/products-list.service';
 
 @Component({
   selector: 'app-select',
@@ -26,7 +26,7 @@ export class SelectComponent implements OnInit, OnChanges{
 
     constructor(
     private fb: FormBuilder,
-    private productService: SharedService,
+    private productService: ProductsListService,
     private messageService: MessageService
     ) {}
 

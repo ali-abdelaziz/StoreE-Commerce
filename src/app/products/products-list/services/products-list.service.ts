@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject} from 'rxjs';
+import { BehaviorSubject, Observable} from 'rxjs';
 import { product } from '../models/product';
 
 @Injectable({
@@ -23,6 +23,22 @@ export class ProductsListService {
   getProductById(id: product) {
     // return this.http.get('https://fakestoreapi.com/products/' + id)
     return this.http.get<product>('https://dummyjson.com/products/' + id)
+  }
+
+  addEditProduct(postData: any, selectedPdt: any) {
+    if(!selectedPdt) {
+      // return this.http.post('https://fakestoreapi.com/products', postData);
+    return this.http.post(`https://dummyjson.com/products/add`, postData);
+    }else {
+      // return this.http.put(`https://fakestoreapi.com/products/${selectedPdt.id}`, postData);
+      return this.http.put(`https://dummyjson.com/products/${selectedPdt.id}`, postData);
+    }
+
+  }
+
+  deleteProduct(productId: number): Observable<any> {
+    // this.http.delete(`https://fakestoreapi.com/products/${productId}`)
+    return this.http.delete(`https://dummyjson.com/products/${productId}`)
   }
 
 }

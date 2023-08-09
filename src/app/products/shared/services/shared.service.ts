@@ -26,14 +26,4 @@ export class SharedService {
     return this.http.get<product>('https://dummyjson.com/products/' + id)
   }
 
-  addEditProduct(postData: any, selectedPdt: any) {
-    if(!selectedPdt) {
-      // return this.http.post('https://fakestoreapi.com/products', postData);
-    return this.http.post('https://dummyjson.com/products/add', postData);
-    }else {
-      // return this.http.put(`https://fakestoreapi.com/products/${selectedPdt.id}`, postData);
-      return this.http.put(`https://dummyjson.com/products/${selectedPdt.id}`, postData);
-    }
-
-  }
 }

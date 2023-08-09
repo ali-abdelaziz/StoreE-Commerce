@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -33,12 +35,13 @@ import { MessageService } from 'primeng/api';
     ButtonModule,
     ToastModule,
     ReactiveFormsModule,
+    ConfirmDialogModule
 
   ],
   exports: [
     AddeditProductComponent
   ],
-  providers: [MessageService]
+  providers: [MessageService, ConfirmationService]
 
 })
 export class ProductsListModule { }
