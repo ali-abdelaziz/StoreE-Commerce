@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable} from 'rxjs';
 import { product } from '../models/product';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -9,36 +10,31 @@ import { product } from '../models/product';
 export class ProductsListService {
   search = new BehaviorSubject<string>("");
   productDetails: any;
+  private apiUrl = environment.apiUrl;
 
 
 
   constructor(private http:HttpClient) { }
 
   getAllProducts() {
-    // return this.http.get<product>('https://fakestoreapi.com/products')
-    // return this.http.get<product>('https://dummyjson.com/products?limit=10&skip=0')
-    return this.http.get<product>('https://dummyjson.com/products')
+    return this.http.get<product>(`${this.apiUrl}/products`)
   }
 
   getProductById(id: product) {
-    // return this.http.get('https://fakestoreapi.com/products/' + id)
-    return this.http.get<product>('https://dummyjson.com/products/' + id)
+    return this.http.get<product>(`${this.apiUrl}/products/` + id)
   }
 
   addEditProduct(postData: any, selectedPdt: any) {
     if(!selectedPdt) {
-      // return this.http.post('https://fakestoreapi.com/products', postData);
-    return this.http.post(`https://dummyjson.com/products/add`, postData);
+    return this.http.post(`${this.apiUrl}/products/add`, postData);
     }else {
-      // return this.http.put(`https://fakestoreapi.com/products/${selectedPdt.id}`, postData);
-      return this.http.put(`https://dummyjson.com/products/${selectedPdt.id}`, postData);
+      return this.http.put(`${this.apiUrl}/products/${selectedPdt.id}`, postData);
     }
 
   }
 
   deleteProduct(productId: number): Observable<any> {
-    // this.http.delete(`https://fakestoreapi.com/products/${productId}`)
-    return this.http.delete(`https://dummyjson.com/products/${productId}`)
+    return this.http.delete(`${this.apiUrl}/products/${productId}`)
   }
 
 }
