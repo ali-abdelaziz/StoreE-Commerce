@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Logged in Successfully'});
       this.router.navigate(['/products'])
     },error => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Incorrect username or password' });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Incorrect user name or password' });
     })
     console.log(this.loginForm.value);
   }

@@ -7,6 +7,7 @@ import { SharedModule } from './products/shared/shared.module';
 import { ProductsListModule } from './products/products-list/products-list.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './products/auth/auth.module';
+import { CoreModule } from './core/core.module';
 // import { FilterPipe } from './products/shared/filter.pipe';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AuthModule } from './products/auth/auth.module';
     AppRoutingModule,
     SharedModule,
     ProductsListModule,
-    // AuthModule,
+    AuthModule,
+    CoreModule,
     FormsModule,
     ReactiveFormsModule,
     // FilterPipe

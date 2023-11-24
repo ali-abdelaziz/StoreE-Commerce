@@ -39,11 +39,18 @@ export class ProductsListService {
 
 
     //  get the token from the local storage and using it for every request
+  // deleteProduct(productId: number): Observable<any> {
+  //   let headers = new HttpHeaders()
+  //   headers.append('Authorization', JSON.stringify(localStorage.getItem('token')))
+
+  //   return this.http.delete(`${this.apiUrl}/products/${productId}`, {headers})
+  //   return this.http.delete('https://crud-107i.onrender.com/products/delete-product/{id}', {headers})
+  // }
+
+    // use auth interceptor to send token
   deleteProduct(productId: number): Observable<any> {
-    let headers = new HttpHeaders()
-    headers.append('Authorization', JSON.stringify(localStorage.getItem('token')))
-    return this.http.delete(`${this.apiUrl}/products/${productId}`, {headers})
-    // return this.http.delete('https://crud-107i.onrender.com/products/delete-product/{id}', {headers})
+    return this.http.delete(`${this.apiUrl}/products/${productId}`)
+    // return this.http.delete('https://crud-107i.onrender.com/products/delete-product/{id}')
   }
 
 }
