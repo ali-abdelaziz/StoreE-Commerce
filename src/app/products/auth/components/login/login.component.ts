@@ -4,6 +4,7 @@ import { LoginService } from '../../services/login.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,12 +32,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.service.login(this.loginForm.value).subscribe(res => {
+    this.service.login(this.loginForm.value).subscribe((res:any) => {
+      localStorage.setItem("token", res.token)
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Logged in Successfully'});
       this.router.navigate(['/products'])
     },error => {
-      this.router.navigate(['/products'])
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: error });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Incorrect username or password' });
     })
     console.log(this.loginForm.value);
   }

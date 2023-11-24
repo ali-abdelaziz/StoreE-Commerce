@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable} from 'rxjs';
 import { product } from '../models/product';
 import { environment } from 'src/environments/environment.development';
@@ -33,8 +33,17 @@ export class ProductsListService {
 
   }
 
+  // deleteProduct(productId: number): Observable<any> {
+  //   return this.http.delete(`${this.apiUrl}/products/${productId}`)
+  // }
+
+
+    //  get the token from the local storage and using it for every request
   deleteProduct(productId: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/products/${productId}`)
+    let headers = new HttpHeaders()
+    headers.append('Authorization', JSON.stringify(localStorage.getItem('token')))
+    return this.http.delete(`${this.apiUrl}/products/${productId}`, {headers})
+    // return this.http.delete('https://crud-107i.onrender.com/products/delete-product/{id}', {headers})
   }
 
 }
