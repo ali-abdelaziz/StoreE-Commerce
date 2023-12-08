@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { ProductsListService } from 'src/app/products/products-list/services/products-list.service';
+import { ProductsListService } from './../../../dashboard/products-list/services/products-list.service';
 
 @Component({
   selector: 'app-select',

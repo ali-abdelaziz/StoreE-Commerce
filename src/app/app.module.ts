@@ -4,15 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './products/shared/shared.module';
-import { ProductsListModule } from './products/products-list/products-list.module';
+import { ProductsListModule } from './products/dashboard/products-list/products-list.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './products/auth/auth.module';
 import { CoreModule } from './core/core.module';
+import { LayoutComponent } from './layout/components/layout/layout.component';
 // import { FilterPipe } from './products/shared/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
