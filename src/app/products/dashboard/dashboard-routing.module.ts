@@ -1,7 +1,7 @@
 import { ProductDetailsComponent } from './products-list/components/product-details/product-details.component';
 import { AddeditProductComponent } from './products-list/components/addedit-product/addedit-product.component';
 import { AllProductsComponent } from './products-list/components/all-products/all-products.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from 'src/app/layout/components/layout/layout.component';
 

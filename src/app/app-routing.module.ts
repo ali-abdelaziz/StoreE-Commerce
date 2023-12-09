@@ -5,6 +5,10 @@ import { LoginComponent } from './products/auth/components/login/login.component
 const routes: Routes = [
   {
     path: '',
+    component: LoginComponent
+  },
+  {
+    path: '',
     loadChildren: () => import('../app/products/dashboard/dashboard.module').then(m => m.DashboardModule),
   },
   {path:"**" , redirectTo:"login" , pathMatch:"full"},
